@@ -6,8 +6,8 @@
   </h1>
 
   <div class="mt-5">
-    <%= link_to raw("<strong>Je cherche</strong> un local"), "#", class: "btn btn-primary btn-lg mx-2" %>
-    <%= link_to raw("<strong>Je propose</strong> un local"), "#", class: "btn btn-success btn-lg mx-2" %>
+    <%= link_to raw("<strong>Je cherche</strong> un local"), locals_path, class: "btn btn-primary btn-lg mx-2" %>
+    <%= link_to raw("<strong>Je propose</strong> un local"), new_local_path, class: "btn btn-success btn-lg mx-2" %>
   </div>
 </div>
 
@@ -42,3 +42,4 @@
     });
   });
 </script>
+
