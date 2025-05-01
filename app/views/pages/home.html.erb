@@ -1,0 +1,44 @@
+<div class="text-center my-5">
+  <%= image_tag "locasso_logo.png", alt: "Locasso Logo", style: "width: 200px;" %>
+
+  <h1 class="mt-4">
+    LocAsso, la <strong>plateforme</strong> de location de <strong>locaux associatifs</strong>
+  </h1>
+
+  <div class="mt-5">
+    <%= link_to raw("<strong>Je cherche</strong> un local"), "#", class: "btn btn-primary btn-lg mx-2" %>
+    <%= link_to raw("<strong>Je propose</strong> un local"), "#", class: "btn btn-success btn-lg mx-2" %>
+  </div>
+</div>
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Locaux disponibles à Nancy</h2>
+  <div id="map" style="height: 500px;"></div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var map = L.map('map').setView([48.6921, 6.1844], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const locals = [
+      { name: "Maison des Associations", lat: 48.6932, lng: 6.1849 },
+      { name: "Espace Jean Jaurès", lat: 48.6905, lng: 6.1750 },
+      { name: "Salle Polyvalente", lat: 48.6950, lng: 6.1790 },
+      { name: "Maison du Peuple", lat: 48.6890, lng: 6.1855 },
+      { name: "Centre Culturel Nancy", lat: 48.6927, lng: 6.1925 },
+      { name: "Espace Associatif Stanislas", lat: 48.6912, lng: 6.1778 },
+      { name: "Locaux Solidaires", lat: 48.6900, lng: 6.1900 },
+      { name: "Salle Blaise Pascal", lat: 48.6945, lng: 6.1835 },
+      { name: "Forum des Associations", lat: 48.6885, lng: 6.1805 },
+      { name: "Maison Quartier Centre", lat: 48.6915, lng: 6.1765 }
+    ];
+
+    locals.forEach(function(local) {
+      L.marker([local.lat, local.lng]).addTo(map)
+        .bindPopup('<strong>' + local.name + '</strong>');
+    });
+  });
+</script>
